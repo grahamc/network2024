@@ -21,3 +21,10 @@ jobs:
       contents: "read"
     with:
       visibility: public
+      runner-map: |
+        {
+          "aarch64-darwin": "macos-latest",
+          "x86_64-darwin": "macos-latest",
+          "x86_64-linux": "namespace-profile-default",
+          "i686-linux": "namespace-profile-default"
+        }
