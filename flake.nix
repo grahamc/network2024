@@ -18,7 +18,7 @@
         ];
       };
 
-      nixosModules.default = { pkgs, system, ... }: {
+      nixosModules.default = { pkgs, ... }: {
         imports = [
           nix.nixosModules.default
         ];
@@ -27,7 +27,7 @@
         documentation.enable = false;
 
         environment.systemPackages = [
-          fh.packages.${system}.default
+          fh.packages.${pkgs.system}.default
         ];
 
         services.openssh = {
@@ -50,7 +50,7 @@
         users = {
           mutableUsers = false;
           users = {
-            root.openssh.authorizedKeys.keyFiles = [
+            root.openssh.authorizedKeys.keys = [
               "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIE335gifUrpJZb5m4sV9ucLt/35Ct5BCoaiE2bntx43k"
             ];
 
@@ -60,7 +60,7 @@
               extraGroups = [ "wheel" ];
               createHome = true;
               home = "/home/grahamc";
-              openssh.authorizedKeys.keyFiles = [
+              openssh.authorizedKeys.keys = [
                 "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIE335gifUrpJZb5m4sV9ucLt/35Ct5BCoaiE2bntx43k"
               ];
             };
