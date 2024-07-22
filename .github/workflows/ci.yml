@@ -25,6 +25,6 @@ jobs:
         {
           "aarch64-darwin": "macos-latest",
           "x86_64-darwin": "macos-latest",
-          "x86_64-linux": "namespace-profile-default",
-          "i686-linux": "namespace-profile-default"
+          "x86_64-linux": "namespace-profile-big",
+          "i686-linux": "namespace-profile-big"
         }
