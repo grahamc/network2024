@@ -538,6 +538,7 @@ in
     enable = true;
     openPorts = false;
     unifiPackage = pkgs.unifi;
+    mongoDbPackage = pkgs.mongodb-5_0.override { python3 = pkgs.python311; };
   };
 
   services.avahi.enable = true;
