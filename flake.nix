@@ -24,10 +24,48 @@
         ];
 
         nixpkgs.config.allowUnfree = true;
+        documentation.enable = false;
 
         environment.systemPackages = [
-          fh.packages.x86_64-linux.default
+          fh.packages.${system}.default
         ];
+
+        services.openssh = {
+          enable = true;
+          passwordAuthentication = false;
+        };
+
+        networking = {
+          firewall = {
+            enable = true;
+            allowedTCPPorts = [ 22 ];
+          };
+        };
+
+        security.acme.acceptTerms = true;
+
+        services.tailscale.enable = true;
+        systemd.services.tailscaled.path = [ pkgs.openresolv ];
+
+        users = {
+          mutableUsers = false;
+          users = {
+            root.openssh.authorizedKeys.keyFiles = [
+              "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIE335gifUrpJZb5m4sV9ucLt/35Ct5BCoaiE2bntx43k"
+            ];
+
+            grahamc = {
+              isNormalUser = true;
+              uid = 1000;
+              extraGroups = [ "wheel" ];
+              createHome = true;
+              home = "/home/grahamc";
+              openssh.authorizedKeys.keyFiles = [
+                "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIE335gifUrpJZb5m4sV9ucLt/35Ct5BCoaiE2bntx43k"
+              ];
+            };
+          };
+        };
       };
 
       nixosConfigurations = {
