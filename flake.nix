@@ -4,7 +4,7 @@
   inputs = {
     fh.url = "https://flakehub.com/f/DeterminateSystems/fh/0.1.13.tar.gz";
     nix.url = "https://flakehub.com/f/DeterminateSystems/nix/2.23.3.tar.gz";
-    nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1";
+    nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/=0.1.647193";
   };
 
   outputs = { self, nixpkgs, fh, nix, ... } @ inputs:
