@@ -130,7 +130,10 @@
             inputs.fh.packages."${pkgs.stdenv.system}".default
           ];
 
-          systemd.services.nix-daemon.serviceConfig.ExecStart = "@${self.packages.${pkgs.stdenv.system}.default}/bin/determinate-nixd determinate-nixd --nix-bin ${config.nix.package}/bin";
+          systemd.services.nix-daemon.serviceConfig.ExecStart = [
+            ""
+            "@${self.packages.${pkgs.stdenv.system}.default}/bin/determinate-nixd determinate-nixd --nix-bin ${config.nix.package}/bin"
+          ];
 
           nix.settings = {
             netrc-file = config.determinate.nix.primaryUser.netrcPath;
