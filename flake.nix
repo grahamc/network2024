@@ -153,7 +153,7 @@
             self.nixosModules.default
             ./lord-nibbler
             {
-              networing.hostName = "lord-nibbler";
+              networking.hostName = "lord-nibbler";
             }
           ];
         };
@@ -166,7 +166,7 @@
             ./kif
             {
               determinate.nix.primaryUser.username = "grahamc";
-              networing.hostName = "kif";
+              networking.hostName = "kif";
             }
           ];
         };
